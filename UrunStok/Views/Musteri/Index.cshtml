@@ -1,0 +1,32 @@
+﻿@using UrunStok.Models.Entity
+@model List<TBL_MUSTERİ>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>Musteri Id</th>
+        <th>Musteri Adı</th>
+        <th>Musteri SoyadıAdı</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+        <th>Alert</th>
+    </tr>
+    <tbody>
+        @foreach (var mst in Model)
+        {
+            <tr>
+                <td>@mst.MUSTERIID</td>
+                <td>@mst.MUSTERİAD</td>
+                <td>@mst.MUSTERİSOYAD</td>
+                <td><a href="/Musteri/Sil/@mst.MUSTERIID" class="btn btn-danger">Sil</a> </td>
+                <td><a href="/Musteri/MusteriGetir/@mst.MUSTERIID" class="btn btn-success">Guncelle</a> </td>
+                <td>@Html.ActionLink("Sil Butonu", "Sil", new {id= mst.MUSTERIID }, new { @class = "btn btn-danger", onclick = "return confirm('Gerçekten Silmek İstiyor musunuz?')"})</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="/Musteri/YeniMusteri" class="btn btn-primary">Musteri Ekle</a>
+

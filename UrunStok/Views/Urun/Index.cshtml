@@ -1,0 +1,38 @@
+﻿@using UrunStok.Models.Entity;
+@model List<TBL_URUNLER>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>Urun Id</th>
+        <th>Urun Adı</th>
+        <th>Marka</th>
+        <th>Kategori</th>
+        <th>Fiyat</th>
+        <th>Stok</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+    <tbody>
+        @foreach (var urn in Model)
+        {
+            <tr>
+                <td>@urn.URUNID</td>
+                <td>@urn.URUNAD</td>
+                <td>@urn.MARKA</td>
+                <td>@urn.TBL_KATEGORİLER.KATEGORİAD</td>
+                <td>@urn.URUNFİYAT</td>
+                <td>@urn.STOK</td>
+                <td><a href="/Urun/Sil/@urn.URUNID" class="btn btn-danger">Sil</a> </td>
+                <td><a href="/Urun/UrunGetir/@urn.URUNID" class="btn btn-success">Guncelle</a> </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="/Urun/UrunEkle" class="btn btn-primary">Ürün Ekle</a>
+
+
